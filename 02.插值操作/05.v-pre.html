@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     有时候我们期望直接输出{{message}}这样的字符串，
+    而不是被{{}}语法转化的message的变量值，此时我们可以使用v-pre标签。 -->
+    <div id="app">
+        <h2>不使用v-pre</h2>
+        <h2>{{message}}</h2>
+        <h2>使用v-pre,不会解析</h2>
+        <h2 v-pre>{{message}}</h2>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '是的'
+            }
+        })
+    </script>
+</body>
+
+</html>

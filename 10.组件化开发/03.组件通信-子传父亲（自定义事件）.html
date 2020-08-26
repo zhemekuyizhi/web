@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn @itemclick="cpnclick"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <button v-for="item in categories" @click = "btnclick(item)"><!-- 别忘了(item) -->
+                {{item.name}}
+            </button>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    categories: [{
+                        id: '1',
+                        name: '张三'
+                    }, {
+                        id: '2',
+                        name: '李四'
+                    }, {
+                        id: '3',
+                        name: '李白'
+                    }]
+                }
+            },
+            methods: {
+                btnclick(item) {
+                    this.$emit('itemclick', item) //itemclick不要少了引号,如果这里没有item
+                        //下面第二个参数输出的则是undefined
+                }
+            }
+        }
+        const app = new Vue({
+            el: '#app', //别忘了这行代码
+            components: {
+                cpn
+            },
+            methods: {
+                cpnclick(item) {
+                    console.log('cpnClick', item);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

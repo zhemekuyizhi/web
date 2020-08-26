@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     ​某些时候我们并不想将变量放在标签内容中，像这样<h2>{{message}}</h2>是将变量h2标签括起来，
+    类似js的innerHTML。
+    但是我们期望将变量imgURL写在如下位置，想这样<img src="imgURL" alt="">导入图片是希望动态获取图片的链接，
+    此时的imgURL并非变量而是字符串imgURL，
+    如果要将其生效为变量，需要使用到一个标签v-bind:，像这样<img v-bind:src="imgURL" alt="">，
+    而且这里也不能使用Mustache语法，类似<img v-bind:src="{{imgURL}}" alt="">，这也是错误的。 -->
+    <div id="app">
+        <!-- 错误的做法这里不能使用Mustache语法 -->
+        <!-- <img v-bind:src="{{imgURL}}" alt=""> -->
+        <!-- 正确的做法使用v-bind指令 -->
+        <img v-bind:src="imgURL" alt="">
+        <a v-bind:href="aHerf">百度一下</a>
+        <!-- 语法糖写法 -->
+        <img :src="imgURL" alt="">
+        <a :href="aHerf">百度一下</a>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                aHerf: 'http://www.baidu.com',
+                imgURL: 'https://cn.bing.com/th?id=OIP.NaSKiHPRcquisK2EehUI3gHaE8&pid=Api&rs=1'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div @click="divclick">
+            123
+            <button @click.stop="btnclick">按钮</button>
+            <!-- 是双引号 -->
+        </div>
+        <form action="https://www.baidu.com/">
+            <input type="submit" value="提交" @click.prevent="iptclick">
+        </form>
+        <button @click.once="btn2click">按钮2</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            methods: {
+                divclick() {
+                    console.log('123')
+                },
+                btnclick() {
+                    console.log('你好')
+                },
+                btn2click() {
+                    console.log('btn2click')
+                },
+                iptclick() {
+                    console.log('ipt');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

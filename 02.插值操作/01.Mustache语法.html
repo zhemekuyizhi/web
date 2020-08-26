@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- mustache是胡须的意思，因为{{}}像胡须，又叫大括号语法。 -->
+    <!-- ​在vue对象挂载的dom元素中，{{}}不仅可以直接写变量，还可以写简单表达式。 -->
+    <div id="app">
+        <h2>{{message}}</h2>
+        <h2>{{message}},123</h2>
+
+        <!-- Mustache的语法不仅可以直接写变量，还可以写简单表达式 -->
+        <h2>{{firstName + lastName}}</h2>
+        <h2>{{firstName + " " + lastName}}</h2>
+        <h2>{{firstName}} {{lastName}}</h2>
+        <h2>{{count * 2}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                firstName: '李',
+                lastName: '白',
+                count: 100
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2 class="title" v-bind:class="{active: isActive, line: isLine}">{{message}}</h2>
+        <h2 class="title" v-bind:class="getClasses()">{{message}}</h2>
+        <!-- 中间要加逗号隔开 -->
+        <button @click="change">切换</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                isActive: true,
+                isline: true
+            },
+            methods: {
+                change() {
+                    this.isActive = !this.isActive //后面的!this.isActive不能少了this
+                },
+                getClasses: function() {
+                    return {
+                        active: this.isActive, //用逗号隔开，不是分号
+                        line: this.isLine
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

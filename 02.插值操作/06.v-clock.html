@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--     ​ 有时候因为加载延时问题，例如卡掉了，数据没有及时刷新，
+    就造成了页面显示从{{message}}到message变量“你好啊”的变化，这样闪动的变化，会造成用户体验不好。
+    此时需要使用到v-cloak的这个标签。在vue解析之前，div属性中有v-cloak这个标签，在vue解析完成之后，
+    v-cloak标签被移除。简单，类似div开始有一个css属性display:none;
+    加载完成之后，css属性变成display:block，元素显示出来。 -->
+    <div id="app" v-cloak>
+        <h2>{{message}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        setTimeout(function() {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: '你好啊'
+                }
+            })
+        }, 1000)
+    </script>
+</body>
+
+</html>

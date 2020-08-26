@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+             <div>我是子组件</div>
+             <button @click="btnclick">按钮</button><!-- 这行代码不能写在上面的div中 -->
+        </div>     
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            methods: {
+                btnclick() {
+                    console.log(this.$parent)
+                }
+            }
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊'
+            },
+            components: {
+                cpn
+            }
+        })
+    </script>
+</body>
+
+</html>

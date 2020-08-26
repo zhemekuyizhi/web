@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--     ​ 在某些时候我们不希望直接输出<a href='http://www.baidu.com'>百度一下</a>这样的字符串，
+    而输出被html自己转化的超链接。此时可以使用v-html。 -->
+    <div id="app">
+        <h2>不使用v-html</h2>
+        <h2>{{url}}</h2>
+        <h2>使用v-html，直接插入html</h2>
+        <h2 v-html="url"></h2>
+
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                url: '<a href="http://www.baidu.com">百度一下</a>'
+            }
+        })
+    </script>
+</body>
+
+</html>
